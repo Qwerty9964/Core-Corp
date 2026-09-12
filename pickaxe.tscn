@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://db278lauiqkf4"]
+
+[ext_resource type="Texture2D" uid="uid://cq0ndxk4unvhr" path="res://assets/pickaxe.png" id="1_40syq"]
+[ext_resource type="Texture2D" uid="uid://br1u466nh5kwn" path="res://assets/icon.svg" id="2_3j5ja"]
+
+[node name="pickaxe" type="Node2D" unique_id=691665657]
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=256546557]
+position = Vector2(13.000001, -1)
+rotation = -0.86444557
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_40syq")
+
+[node name="trackingpoint" type="Node2D" parent="sprite" unique_id=522402161]
+position = Vector2(9.549805, 13.760694)
+rotation = -0.72415316
+
+[node name="Icon" type="Sprite2D" parent="sprite/trackingpoint" unique_id=1749129671]
+position = Vector2(8.009374e-07, 1.0728836e-06)
+rotation = 0.7241531
+scale = Vector2(0.050000004, 0.050000004)
+texture = ExtResource("2_3j5ja")
+
+[node name="bottomtracking" type="Node2D" parent="sprite" unique_id=755559994]
+position = Vector2(-3.4314332, -1.4540162)
+
+[node name="Icon" type="Sprite2D" parent="sprite/bottomtracking" unique_id=1308809390]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_3j5ja")
