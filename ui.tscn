@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://j88xef6qjp6l"]
+
+[ext_resource type="Script" uid="uid://b0v5xt1vjfkxb" path="res://ui.gd" id="1_fyqef"]
+
+[node name="ui" type="CanvasLayer" unique_id=181108479]
+script = ExtResource("1_fyqef")
+
+[node name="Button" type="Button" parent="." unique_id=800582158]
+offset_left = 39.0
+offset_top = 15.0
+offset_right = 47.0
+offset_bottom = 23.0
+text = "SURFACE"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

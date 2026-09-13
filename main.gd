@@ -49,6 +49,7 @@ func break_tile() -> void:
 	
 	if terrain.get_cell_source_id(top_tile_cords)!=-1 or terrain.get_cell_source_id(bottom_tile_cords)!=-1:
 		activate_particles(top_pickaxe_pos)
+		$character/miningpivot/pickaxe/sound.pitch_scale+=randf_range(-0.015,0.015)
 		$character/miningpivot/pickaxe/sound.play()
 		camera_shake()
 		
@@ -71,5 +72,5 @@ func camera_shake() -> void:
 		$character/Camera2D.position+=shake_vector
 	
 		
-	
-	
+func _on_ui_surface() -> void:
+	$character.position.y=140
