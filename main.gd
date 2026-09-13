@@ -18,12 +18,12 @@ func _process(delta: float) -> void:
 		pickaxe.visible = true
 		if Input.is_action_pressed('mine'):
 			if mode == "negative":
-				pickaxe.rotation-=17*delta
+				pickaxe.rotation-=18*delta
 				if pickaxe.rotation<-1.05:
 					mode = "positive"
 					
 			elif mode == "positive":
-				pickaxe.rotation+=17*delta
+				pickaxe.rotation+=18*delta
 				if pickaxe.rotation>1.05:
 					mode = "negative"
 					
@@ -49,6 +49,7 @@ func break_tile() -> void:
 	
 	if terrain.get_cell_source_id(top_tile_cords)!=-1 or terrain.get_cell_source_id(bottom_tile_cords)!=-1:
 		activate_particles(top_pickaxe_pos)
+		$character/miningpivot/pickaxe/sound.play()
 		camera_shake()
 		
 	terrain.erase_cell(top_tile_cords)
