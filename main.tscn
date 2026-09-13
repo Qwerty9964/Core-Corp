@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://lit5oxc31vmg" path="res://character.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://ceuh00polfir2" path="res://assets/stonetile.png" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://pickaxe.tscn" id="4_lquwl"]
-[ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://simpledigsound.wav" id="5_7mycd"]
+[ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://assets/simpledigsound.wav" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://j88xef6qjp6l" path="res://ui.tscn" id="7_272bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]

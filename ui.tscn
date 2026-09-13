@@ -10,6 +10,7 @@ offset_left = 39.0
 offset_top = 15.0
 offset_right = 47.0
 offset_bottom = 23.0
+focus_mode = 0
 text = "SURFACE"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
