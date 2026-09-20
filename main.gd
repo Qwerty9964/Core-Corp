@@ -6,10 +6,10 @@ var mode: String = "negative"
 const MINING_PARTICLES = preload("res://mineparticle.tscn")
 
 const SOURCE_ID = 0
-const GRASS = Vector2i(1,1)
-const DIRT = Vector2i(0,0)
-const STONE = Vector2i(1,0)
-const CRYSTAL = Vector2i(0,1)
+const GRASS = Vector2i(0,0)
+const DIRT = Vector2i(1,0)
+const STONE = Vector2i(0,1)
+const CRYSTAL = Vector2i(1,1)
 
 var cave_noise := FastNoiseLite.new()
 
@@ -20,7 +20,7 @@ func _ready() -> void:
 	cave_noise.frequency=0.04
 	
 	cave_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
-	cave_noise.fractal_octaves = 4
+	cave_noise.fractal_octaves = 6
 	cave_noise.fractal_lacunarity = 2.0
 	cave_noise.fractal_gain = 0.5
 	

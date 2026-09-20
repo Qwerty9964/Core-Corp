@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsdxqa0igaqd0" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cnu85y1xoxbp5" path="res://character.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://cadffospc2gd" path="res://assets/tilesheet1.png" id="2_272bh"]
+[ext_resource type="Texture2D" uid="uid://dbebnanqqsuws" path="res://aitilesheet1.png" id="2_272bh"]
 [ext_resource type="Script" uid="uid://lit5oxc31vmg" path="res://character.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://pickaxe.tscn" id="4_lquwl"]
 [ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://assets/simpledigsound.wav" id="5_7mycd"]
@@ -45,7 +45,7 @@ position = Vector2(1335, -42)
 script = ExtResource("2_h2yge")
 
 [node name="miningpivot" type="Node2D" parent="character" unique_id=1736636872]
-position = Vector2(0.71428585, 4.285714)
+position = Vector2(5, 5.7142854)
 
 [node name="pickaxe" parent="character/miningpivot" unique_id=691665657 instance=ExtResource("4_lquwl")]
 visible = false
