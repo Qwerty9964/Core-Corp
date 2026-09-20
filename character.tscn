@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://hrgwx2gmwpd3" path="res://assets/base_character_sprite.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://dyjq5545mn46v" path="res://camera_2d.gd" id="2_pjt0s"]
+[ext_resource type="Texture2D" uid="uid://br1u466nh5kwn" path="res://assets/icon.svg" id="3_wa5vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdbf6"]
 size = Vector2(10.714293, 27.85715)
@@ -19,3 +20,9 @@ shape = SubResource("RectangleShape2D_bdbf6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1525457876]
 script = ExtResource("2_pjt0s")
+
+[node name="dashindicator" type="Sprite2D" parent="." unique_id=1646841075]
+visible = false
+position = Vector2(17.107143, -0.5892843)
+scale = Vector2(0.088727675, -0.05775672)
+texture = ExtResource("3_wa5vi")
