@@ -33,7 +33,7 @@ script = ExtResource("1_1bvp3")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1616620848]
 offset_left = -3189.0
 offset_top = -1431.0
-offset_right = 3736.0
+offset_right = 10668.0
 offset_bottom = 2959.0
 color = Color(0.023784133, 0.0077189947, 0.056040138, 1)
 
@@ -41,7 +41,7 @@ color = Color(0.023784133, 0.0077189947, 0.056040138, 1)
 tile_set = SubResource("TileSet_3442d")
 
 [node name="character" parent="." unique_id=951427430 instance=ExtResource("1_ig7tw")]
-position = Vector2(362, -41.99997)
+position = Vector2(1335, -42)
 script = ExtResource("2_h2yge")
 
 [node name="miningpivot" type="Node2D" parent="character" unique_id=1736636872]

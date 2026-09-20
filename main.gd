@@ -17,7 +17,7 @@ var cave_noise := FastNoiseLite.new()
 func _ready() -> void:
 	cave_noise.noise_type=FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	cave_noise.seed=randi()
-	cave_noise.frequency=0.055
+	cave_noise.frequency=0.04
 	
 	cave_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
 	cave_noise.fractal_octaves = 4
@@ -100,27 +100,28 @@ func generate_world() -> void:
 		for y in range(150):
 			var cell
 			var randomn := randf()
+			var randomm := randf()
 			var cave_noise_value = cave_noise.get_noise_2d(x,y)
+			var stone_chance := 1 - remap(y*2.5,0,150,0,1.5)
+			var grass_chance := remap(y*5,0,150,0,4)
 			
-			if cave_noise_value < -0.25:
+			if cave_noise_value < -0.265 and y >20:
 				continue
 				
 			else:
-				if randomn > 0.98:
-					cell=CRYSTAL
-				
-				#elif randomn <=0.98 and randomn >0.7:
-					#cell=GRASS
-					
-				elif randomn <=0.98 and randomn >0.4:
-					cell=DIRT
-					
-				elif randomn <=0.4:
+				if randomn > stone_chance:
 					cell=STONE
 					
-			
-			
-			
+				else:
+					print("grass_chance" + str(grass_chance))
+					print("val" + str(randomn))
+					if randomm > grass_chance:
+						print("hello")
+						cell = GRASS
+						
+					else:
+						cell = DIRT
+					
 			terrain.set_cell(
 				Vector2i(x,y),
 				SOURCE_ID,
