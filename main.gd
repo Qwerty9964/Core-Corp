@@ -12,12 +12,22 @@ const STONE = Vector2i(0,1)
 const CRYSTAL = Vector2i(1,1)
 
 var cave_noise := FastNoiseLite.new()
+var crystal_noise := FastNoiseLite.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cave_noise.noise_type=FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	cave_noise.seed=randi()
-	cave_noise.frequency=0.04
+	cave_noise.frequency=0.043
+	
+	cave_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
+	cave_noise.fractal_octaves = 4
+	cave_noise.fractal_lacunarity = 2.0
+	cave_noise.fractal_gain = 0.5
+	
+	crystal_noise.noise_type=FastNoiseLite.TYPE_PERLIN
+	crystal_noise.seed=randi()
+	crystal_noise.frequency=0.15
 	
 	cave_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
 	cave_noise.fractal_octaves = 6
@@ -57,24 +67,37 @@ func break_tile() -> void:
 	
 	$character/miningpivot.look_at(mouse_pos)
 	
-	var top_pickaxe_pos = $character/miningpivot/pickaxe/sprite/trackingpoint.global_position
-	var top_terrain_pos = terrain.to_local(top_pickaxe_pos)
-	var top_tile_cords = terrain.local_to_map(top_terrain_pos)
-	
-	
+	var left_pickaxe_pos = $character/miningpivot/pickaxe/sprite/trackingpoint.global_position
+	var left_terrain_pos = terrain.to_local(left_pickaxe_pos)
+	var left_tile_cords = terrain.local_to_map(left_terrain_pos)
 	
 	var bottom_pickaxe_pos = $character/miningpivot/pickaxe/sprite/bottomtracking.global_position
 	var bottom_terrain_pos = terrain.to_local(bottom_pickaxe_pos)
 	var bottom_tile_cords = terrain.local_to_map(bottom_terrain_pos)
 	
-	if terrain.get_cell_source_id(top_tile_cords)!=-1 or terrain.get_cell_source_id(bottom_tile_cords)!=-1:
+	var right_pickaxe_pos = $character/miningpivot/pickaxe/sprite/righttracking.global_position
+	var right_terrain_pos = terrain.to_local(right_pickaxe_pos)
+	var right_tile_cords = terrain.local_to_map(right_terrain_pos)
+	
+	var handle_pickaxe_pos = $character/miningpivot/pickaxe/sprite/handletracking.global_position
+	var handle_terrain_pos = terrain.to_local(handle_pickaxe_pos)
+	var handle_tile_cords = terrain.local_to_map(handle_terrain_pos)
+	
+	var top_pickaxe_pos = $character/miningpivot/pickaxe/sprite/toptracking.global_position
+	var top_terrain_pos = terrain.to_local(top_pickaxe_pos)
+	var top_tile_cords = terrain.local_to_map(top_terrain_pos)
+	
+	if terrain.get_cell_source_id(top_tile_cords)!=-1 or terrain.get_cell_source_id(bottom_tile_cords)!=-1 or terrain.get_cell_source_id(handle_tile_cords)!=-1 or terrain.get_cell_source_id(right_tile_cords)!=-1:
 		activate_particles(top_pickaxe_pos)
 		$character/miningpivot/pickaxe/sound.pitch_scale+=randf_range(-0.015,0.015)
 		$character/miningpivot/pickaxe/sound.play()
 		camera_shake()
 		
-	terrain.erase_cell(top_tile_cords)
+	terrain.erase_cell(left_tile_cords)
 	terrain.erase_cell(bottom_tile_cords)
+	terrain.erase_cell(handle_tile_cords)
+	terrain.erase_cell(right_tile_cords)
+	terrain.erase_cell(top_tile_cords)
 	#terrain.erase_cell(Vector2i(tile_cords.x+1,tile_cords.y+1))
 	#terrain.erase_cell(Vector2i(tile_cords.x,tile_cords.y+1))
 	#terrain.erase_cell(Vector2i(tile_cords.x+1,tile_cords.y))
@@ -102,14 +125,18 @@ func generate_world() -> void:
 			var randomn := randf()
 			var randomm := randf()
 			var cave_noise_value = cave_noise.get_noise_2d(x,y)
-			var stone_chance := 1 - remap(y*2.5,0,150,0,1.5)
-			var grass_chance := remap(y*5,0,150,0,4)
+			var crystal_noise_value = crystal_noise.get_noise_2d(x,y)
+			var stone_chance = clamp(1 - remap(y*2.5,0,150,0,1.5),0,1)
+			var grass_chance = clamp(remap(y*5,0,150,0,4), 0 ,1)
 			
-			if cave_noise_value < -0.265 and y >20:
+			if cave_noise_value < -0.287 and y >20:
 				continue
 				
 			else:
-				if randomn > stone_chance:
+				if crystal_noise_value>0.48 and y >30:
+					cell=CRYSTAL
+				
+				elif randomn > stone_chance:
 					cell=STONE
 					
 				else:

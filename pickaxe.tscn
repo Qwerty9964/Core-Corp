@@ -1,30 +1,52 @@
 [gd_scene format=3 uid="uid://db278lauiqkf4"]
 
-[ext_resource type="Texture2D" uid="uid://cq0ndxk4unvhr" path="res://assets/pickaxe.png" id="1_40syq"]
+[ext_resource type="Texture2D" uid="uid://dblcq86snrklk" path="res://apickaxe.png" id="1_3j5ja"]
 [ext_resource type="Texture2D" uid="uid://br1u466nh5kwn" path="res://assets/icon.svg" id="2_3j5ja"]
 
 [node name="pickaxe" type="Node2D" unique_id=691665657]
 
-[node name="sprite" type="Sprite2D" parent="." unique_id=256546557]
-position = Vector2(13.000001, -1)
-rotation = -0.86444557
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_40syq")
+[node name="sprite" type="Sprite2D" parent="." unique_id=1982206195]
+position = Vector2(12, 0)
+rotation = 0.7567353
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_3j5ja")
 
 [node name="trackingpoint" type="Node2D" parent="sprite" unique_id=522402161]
-position = Vector2(9.549805, 13.760694)
-rotation = -0.72415316
+position = Vector2(193.8883, -183.08038)
+rotation = -0.8389764
+scale = Vector2(20.000002, 20.000002)
 
 [node name="Icon" type="Sprite2D" parent="sprite/trackingpoint" unique_id=1749129671]
-position = Vector2(8.009374e-07, 1.0728836e-06)
+position = Vector2(-2.6374962, -8.578994)
 rotation = 0.7241531
 scale = Vector2(0.050000004, 0.050000004)
 texture = ExtResource("2_3j5ja")
 
 [node name="bottomtracking" type="Node2D" parent="sprite" unique_id=755559994]
-position = Vector2(-3.4314332, -1.4540162)
+position = Vector2(-28.562866, 519.8993)
+rotation = -0.11482324
+scale = Vector2(20, 20)
 
 [node name="Icon" type="Sprite2D" parent="sprite/bottomtracking" unique_id=1308809390]
-position = Vector2(9.536743e-07, 9.536743e-07)
+position = Vector2(4.39701, -25.660166)
 scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_3j5ja")
+
+[node name="handletracking" type="Node2D" parent="sprite" unique_id=740356113]
+
+[node name="Sprite2D" type="Sprite2D" parent="sprite/handletracking" unique_id=150408030]
+position = Vector2(-193.88832, 183.08038)
+texture = ExtResource("2_3j5ja")
+
+[node name="righttracking" type="Node2D" parent="sprite" unique_id=1251671511]
+
+[node name="Sprite2D" type="Sprite2D" parent="sprite/righttracking" unique_id=704559822]
+position = Vector2(261.19247, -63.251167)
+texture = ExtResource("2_3j5ja")
+
+[node name="toptracking" type="Node2D" parent="sprite" unique_id=726352231]
+position = Vector2(219.47534, -253.08652)
+
+[node name="Sprite2D" type="Sprite2D" parent="sprite/toptracking" unique_id=1808665110]
+position = Vector2(48.47209, -45.770084)
 texture = ExtResource("2_3j5ja")

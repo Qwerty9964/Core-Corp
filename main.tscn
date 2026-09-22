@@ -45,7 +45,7 @@ position = Vector2(1335, -42)
 script = ExtResource("2_h2yge")
 
 [node name="miningpivot" type="Node2D" parent="character" unique_id=1736636872]
-position = Vector2(5, 5.7142854)
+position = Vector2(4.7683716e-07, 3.5714285)
 
 [node name="pickaxe" parent="character/miningpivot" unique_id=691665657 instance=ExtResource("4_lquwl")]
 visible = false
