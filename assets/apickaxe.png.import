@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hrgwx2gmwpd3"
-path="res://.godot/imported/base_character_sprite.png-ba63f289d7b65a306ad99269298ad05d.ctex"
+uid="uid://dblcq86snrklk"
+path="res://.godot/imported/apickaxe.png-05fd0451af4b04f9a678e1374b2ea9da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/base_character_sprite.png"
-dest_files=["res://.godot/imported/base_character_sprite.png-ba63f289d7b65a306ad99269298ad05d.ctex"]
+source_file="res://assets/apickaxe.png"
+dest_files=["res://.godot/imported/apickaxe.png-05fd0451af4b04f9a678e1374b2ea9da.ctex"]
 
 [params]
 

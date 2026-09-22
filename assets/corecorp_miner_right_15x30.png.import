@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceuh00polfir2"
-path="res://.godot/imported/stonetile.png-74a90fb862c6574c6ab4723f208c93cd.ctex"
+uid="uid://d18yxo4iph8b3"
+path="res://.godot/imported/corecorp_miner_right_15x30.png-7e695f1aec87506972dee250c67f7f94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stonetile.png"
-dest_files=["res://.godot/imported/stonetile.png-74a90fb862c6574c6ab4723f208c93cd.ctex"]
+source_file="res://assets/corecorp_miner_right_15x30.png"
+dest_files=["res://.godot/imported/corecorp_miner_right_15x30.png-7e695f1aec87506972dee250c67f7f94.ctex"]
 
 [params]
 

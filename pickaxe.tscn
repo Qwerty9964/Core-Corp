@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://db278lauiqkf4"]
 
-[ext_resource type="Texture2D" uid="uid://dblcq86snrklk" path="res://apickaxe.png" id="1_3j5ja"]
+[ext_resource type="Texture2D" uid="uid://dblcq86snrklk" path="res://assets/apickaxe.png" id="1_3j5ja"]
 [ext_resource type="Texture2D" uid="uid://br1u466nh5kwn" path="res://assets/icon.svg" id="2_3j5ja"]
 
 [node name="pickaxe" type="Node2D" unique_id=691665657]
