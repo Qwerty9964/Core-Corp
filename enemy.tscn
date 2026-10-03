@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://chwdn0aaa82y3"]
+
+[ext_resource type="Script" uid="uid://dqjt5qmqtrqad" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://gi0nkq0yklp7" path="res://spikeball1.png" id="1_7k104"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdbf6"]
+radius = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdbf6"]
+size = Vector2(10, 11)
+
+[node name="enemy" type="CharacterBody2D" unique_id=137450380]
+script = ExtResource("1_4gyqm")
+
+[node name="detectionarea" type="Area2D" parent="." unique_id=718103798]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionarea" unique_id=725809057]
+shape = SubResource("CircleShape2D_bdbf6")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=811792284]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_7k104")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=88831164]
+shape = SubResource("RectangleShape2D_bdbf6")
+
+[connection signal="body_entered" from="detectionarea" to="." method="_on_detectionarea_body_entered"]

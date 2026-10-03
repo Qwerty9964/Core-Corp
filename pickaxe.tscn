@@ -6,47 +6,49 @@
 [node name="pickaxe" type="Node2D" unique_id=691665657]
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1982206195]
-position = Vector2(12, 0)
+position = Vector2(12, -1.1920929e-07)
 rotation = 0.7567353
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_3j5ja")
 
 [node name="trackingpoint" type="Node2D" parent="sprite" unique_id=522402161]
-position = Vector2(193.8883, -183.08038)
+position = Vector2(30.990984, -258.49048)
 rotation = -0.8389764
 scale = Vector2(20.000002, 20.000002)
 
 [node name="Icon" type="Sprite2D" parent="sprite/trackingpoint" unique_id=1749129671]
-position = Vector2(-2.6374962, -8.578994)
+position = Vector2(7.1525574e-07, 9.536743e-07)
 rotation = 0.7241531
 scale = Vector2(0.050000004, 0.050000004)
 texture = ExtResource("2_3j5ja")
 
 [node name="bottomtracking" type="Node2D" parent="sprite" unique_id=755559994]
-position = Vector2(-28.562866, 519.8993)
+position = Vector2(-4.5776367e-05, 0)
 rotation = -0.11482324
 scale = Vector2(20, 20)
 
 [node name="Icon" type="Sprite2D" parent="sprite/bottomtracking" unique_id=1308809390]
-position = Vector2(4.39701, -25.660166)
+position = Vector2(1.4305115e-06, 0)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_3j5ja")
 
 [node name="handletracking" type="Node2D" parent="sprite" unique_id=740356113]
+position = Vector2(-218.12436, 205.96542)
 
 [node name="Sprite2D" type="Sprite2D" parent="sprite/handletracking" unique_id=150408030]
-position = Vector2(-193.88832, 183.08038)
+position = Vector2(-3.0517578e-05, -3.0517578e-05)
 texture = ExtResource("2_3j5ja")
 
 [node name="righttracking" type="Node2D" parent="sprite" unique_id=1251671511]
+position = Vector2(238.30743, -87.48722)
 
 [node name="Sprite2D" type="Sprite2D" parent="sprite/righttracking" unique_id=704559822]
-position = Vector2(261.19247, -63.251167)
+position = Vector2(0, 1.5258789e-05)
 texture = ExtResource("2_3j5ja")
 
 [node name="toptracking" type="Node2D" parent="sprite" unique_id=726352231]
 position = Vector2(219.47534, -253.08652)
 
 [node name="Sprite2D" type="Sprite2D" parent="sprite/toptracking" unique_id=1808665110]
-position = Vector2(48.47209, -45.770084)
+position = Vector2(-48.47207, 45.770107)
 texture = ExtResource("2_3j5ja")

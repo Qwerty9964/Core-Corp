@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cnu85y1xoxbp5" path="res://character.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dbebnanqqsuws" path="res://assets/aitilesheet1.png" id="2_272bh"]
 [ext_resource type="Script" uid="uid://lit5oxc31vmg" path="res://character.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://rd7to1aiy03h" path="res://assets/aitilesheetalt1_32x32.png" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://pickaxe.tscn" id="4_lquwl"]
 [ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://assets/simpledigsound.wav" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://j88xef6qjp6l" path="res://ui.tscn" id="7_272bh"]
@@ -20,21 +21,33 @@ texture = ExtResource("2_272bh")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
+texture = ExtResource("3_5vw27")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSet" id="TileSet_3442d"]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 custom_data_layer_0/name = "is_mined"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_lquwl")
+sources/2 = SubResource("TileSetAtlasSource_kek77")
 
 [node name="main" type="Node2D" unique_id=2037377725]
 script = ExtResource("1_1bvp3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1616620848]
-offset_left = -3189.0
-offset_top = -1431.0
-offset_right = 10668.0
-offset_bottom = 2959.0
+offset_left = -3211.0
+offset_top = -1177.0
+offset_right = 10646.0
+offset_bottom = 3213.0
 color = Color(0.023784133, 0.0077189947, 0.056040138, 1)
 
 [node name="terrain" type="TileMapLayer" parent="." unique_id=840139142]

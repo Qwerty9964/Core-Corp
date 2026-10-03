@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dxq0svegriah5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bdbf6"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 147.37
+initial_velocity_max = 147.37
+gravity = Vector3(0, 98, 0)
+color = Color(0.21960784, 1, 1, 1)
+
+[node name="enemyexplodeparticles" type="Node2D" unique_id=2129570871]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1221478999]
+amount = 100
+lifetime = 0.44
+process_material = SubResource("ParticleProcessMaterial_bdbf6")

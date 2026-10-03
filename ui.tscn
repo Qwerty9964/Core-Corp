@@ -6,11 +6,41 @@
 script = ExtResource("1_fyqef")
 
 [node name="Button" type="Button" parent="." unique_id=800582158]
-offset_left = 39.0
-offset_top = 15.0
-offset_right = 47.0
-offset_bottom = 23.0
+offset_left = 19.0
+offset_top = -45.0
+offset_right = 97.0
+offset_bottom = -14.0
 focus_mode = 0
 text = "SURFACE"
+
+[node name="Panel" type="Panel" parent="." unique_id=1164117651]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 140.0
+offset_bottom = 45.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=757163277]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 37.0
+offset_bottom = 32.0
+color = Color(0.79043555, 0.059845775, 0.22730091, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Panel" unique_id=1440252411]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 7.0
+offset_right = 78.0
+offset_bottom = 31.0
+color = Color(0.7921569, 0.05882353, 0.22745098, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Panel" unique_id=183220720]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 8.0
+offset_right = 117.0
+offset_bottom = 30.0
+color = Color(0.7921569, 0.05882353, 0.22745098, 1)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

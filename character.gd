@@ -11,6 +11,7 @@ var dash_direction
 var direction
 var dash_timer = 15
 var dash_cooldown=0
+var lives = 3
 
 func _physics_process(delta: float) -> void:
 	
@@ -28,6 +29,9 @@ func _physics_process(delta: float) -> void:
 
 	
 	direction = Input.get_axis("move_left","move_right")
+	if not dash:
+		dash_direction=direction
+	
 	
 	if dash_cooldown!=0:
 		dash_cooldown-=1

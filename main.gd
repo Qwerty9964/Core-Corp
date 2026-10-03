@@ -4,12 +4,16 @@ extends Node2D
 var mode: String = "negative"
 @onready var pickaxe: Node2D = $character/miningpivot/pickaxe
 const MINING_PARTICLES = preload("res://mineparticle.tscn")
+const ENEMY_SCENE = preload("res://enemy.tscn")
 
 const SOURCE_ID = 0
+const ALT_SOURCE_ID = 2
 const GRASS = Vector2i(0,0)
 const DIRT = Vector2i(1,0)
 const STONE = Vector2i(0,1)
 const CRYSTAL = Vector2i(1,1)
+
+
 
 var cave_noise := FastNoiseLite.new()
 var crystal_noise := FastNoiseLite.new()
@@ -49,12 +53,12 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed('mine'):
 			if mode == "negative":
 				pickaxe.rotation-=18*delta
-				if pickaxe.rotation<-1.05:
+				if pickaxe.rotation<-1.03:
 					mode = "positive"
 					
 			elif mode == "positive":
 				pickaxe.rotation+=18*delta
-				if pickaxe.rotation>1.05:
+				if pickaxe.rotation>1.03:
 					mode = "negative"
 					
 			break_tile()
@@ -121,36 +125,76 @@ func _on_ui_surface() -> void:
 func generate_world() -> void:
 	for x in range(600):
 		for y in range(150):
+			var id
 			var cell
 			var randomn := randf()
 			var randomm := randf()
-			var cave_noise_value = cave_noise.get_noise_2d(x,y)
-			var crystal_noise_value = crystal_noise.get_noise_2d(x,y)
+			var randome := randf()
+			var cave_noise_value := cave_noise.get_noise_2d(x,y)
+			var crystal_noise_value := crystal_noise.get_noise_2d(x,y)
 			var stone_chance = clamp(1 - remap(y*2.5,0,150,0,1.5),0,1)
 			var grass_chance = clamp(remap(y*5,0,150,0,4), 0 ,1)
+			var enemy_chance := 0.001
 			
-			if cave_noise_value < -0.287 and y >20:
-				continue
-				
+			
+			if randome <enemy_chance:
+				spawn_enemy(Vector2(x,y))
 			else:
-				if crystal_noise_value>0.48 and y >30:
-					cell=CRYSTAL
-				
-				elif randomn > stone_chance:
-					cell=STONE
+				if cave_noise_value < -0.287 and y >20:
+					continue
 					
 				else:
-					print("grass_chance" + str(grass_chance))
-					print("val" + str(randomn))
-					if randomm > grass_chance:
-						print("hello")
-						cell = GRASS
+					if crystal_noise_value>0.48 and y >30:
+						if randf_range(0,1) > 0.4:
+							id=SOURCE_ID
+						else:
+							id=ALT_SOURCE_ID
+							
+						cell=CRYSTAL
+					
+					elif randomn > stone_chance:
+						if randf_range(0,1) > 0.3:
+							id=SOURCE_ID
+						else:
+							id=ALT_SOURCE_ID
+							
+						cell=STONE
 						
 					else:
-						cell = DIRT
-					
-			terrain.set_cell(
-				Vector2i(x,y),
-				SOURCE_ID,
-				cell
-			)
+						if randomm > grass_chance:
+							if randf_range(0,1) > 0.2:
+								id=SOURCE_ID
+							else:
+								id=ALT_SOURCE_ID
+							
+							cell = GRASS
+							
+						else:
+							if randf_range(0,1) > 0.4:
+								id=SOURCE_ID
+							else:
+								id=ALT_SOURCE_ID
+							cell = DIRT
+						
+				terrain.set_cell(
+					Vector2i(x,y),
+					id,
+					cell
+				)
+				
+func spawn_enemy(tile_cords) -> void:
+	print("hi")
+	var local_cords = terrain.map_to_local(tile_cords)
+	var global_cords = terrain.to_global(local_cords)
+	print(global_cords)
+	
+	var enemy = ENEMY_SCENE.instantiate()
+	enemy.global_position = global_cords
+	enemy.player=$character
+	enemy.terrain=$terrain
+	
+	self.add_child(enemy)
+	
+	
+	
+	
