@@ -13,7 +13,7 @@ const DIRT = Vector2i(1,0)
 const STONE = Vector2i(0,1)
 const CRYSTAL = Vector2i(1,1)
 
-
+const GAMEOVER_SCREEN = preload("res://gameover.tscn")
 
 var cave_noise := FastNoiseLite.new()
 var crystal_noise := FastNoiseLite.new()
@@ -44,6 +44,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pickaxe.visible = false
+	$ui/Panel.lives = $character.lives
 	
 	if Input.is_action_just_pressed("surface"):
 		_on_ui_surface()
@@ -124,7 +125,7 @@ func _on_ui_surface() -> void:
 	
 func generate_world() -> void:
 	for x in range(600):
-		for y in range(150):
+		for y in range(400):
 			var id
 			var cell
 			var randomn := randf()
@@ -183,7 +184,6 @@ func generate_world() -> void:
 				)
 				
 func spawn_enemy(tile_cords) -> void:
-	print("hi")
 	var local_cords = terrain.map_to_local(tile_cords)
 	var global_cords = terrain.to_global(local_cords)
 	print(global_cords)
@@ -195,6 +195,7 @@ func spawn_enemy(tile_cords) -> void:
 	
 	self.add_child(enemy)
 	
-	
-	
-	
+
+func _on_character_lives_signal(char_lives) -> void:
+	if char_lives==0:
+		get_tree().change_scene_to_packed(GAMEOVER_SCREEN)

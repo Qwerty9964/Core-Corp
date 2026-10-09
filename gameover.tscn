@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://1fs2hy0ml5m8"]
+
+[ext_resource type="Script" uid="uid://c141v5ptk7e2d" path="res://gameover.gd" id="1_4nh4k"]
+
+[node name="gameover" type="Node2D" unique_id=1306269893]
+script = ExtResource("1_4nh4k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1395696018]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=51390534]
+offset_right = 655.0
+offset_bottom = 372.0
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=704385597]
+offset_left = 292.0
+offset_top = 160.0
+offset_right = 367.0
+offset_bottom = 191.0
+text = "RESTART"
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_button_button_down"]

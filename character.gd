@@ -12,8 +12,10 @@ var direction
 var dash_timer = 15
 var dash_cooldown=0
 var lives = 3
+signal lives_signal
 
 func _physics_process(delta: float) -> void:
+	lives_signal.emit(lives)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -57,3 +59,4 @@ func _physics_process(delta: float) -> void:
 	
 
 	move_and_slide()
+	

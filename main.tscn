@@ -47,7 +47,7 @@ script = ExtResource("1_1bvp3")
 offset_left = -3211.0
 offset_top = -1177.0
 offset_right = 10646.0
-offset_bottom = 3213.0
+offset_bottom = 13414.0
 color = Color(0.023784133, 0.0077189947, 0.056040138, 1)
 
 [node name="terrain" type="TileMapLayer" parent="." unique_id=840139142]
@@ -70,4 +70,6 @@ pitch_scale = 0.8
 
 [node name="ui" parent="." unique_id=181108479 instance=ExtResource("7_272bh")]
 
+[connection signal="lives_signal" from="character" to="." method="_on_character_lives_signal"]
+[connection signal="lives_signal" from="character" to="ui" method="_on_character_lives_signal"]
 [connection signal="surface" from="ui" to="." method="_on_ui_surface"]

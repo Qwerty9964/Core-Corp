@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqjt5qmqtrqad" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://gi0nkq0yklp7" path="res://spikeball1.png" id="1_7k104"]
+[ext_resource type="PackedScene" uid="uid://dxq0svegriah5" path="res://enemyexplodeparticles.tscn" id="3_qi2p4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdbf6"]
 radius = 14.0
@@ -23,5 +24,7 @@ texture = ExtResource("1_7k104")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=88831164]
 shape = SubResource("RectangleShape2D_bdbf6")
+
+[node name="enemyexplodeparticles" parent="." unique_id=2129570871 instance=ExtResource("3_qi2p4")]
 
 [connection signal="body_entered" from="detectionarea" to="." method="_on_detectionarea_body_entered"]

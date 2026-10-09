@@ -24,11 +24,6 @@ position = Vector2(17.107143, -0.5892843)
 scale = Vector2(0.088727675, -0.05775672)
 texture = ExtResource("3_wa5vi")
 
-[node name="Futuristicchracter" type="Sprite2D" parent="." unique_id=792694147]
-position = Vector2(0, 2.857143)
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("3_wfnr8")
-
 [node name="Futuristicchracter2" type="Sprite2D" parent="." unique_id=373571033]
 position = Vector2(1.4210855e-14, 2.857143)
 scale = Vector2(0.02, 0.02)
