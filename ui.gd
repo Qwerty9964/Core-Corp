@@ -18,13 +18,11 @@ func _process(delta: float) -> void:
 	$Panel.lives=lives
 	
 	if lives==3:
-		print(3)
 		heart1.visible=true
 		heart2.visible=true
 		heart3.visible=true
 		
 	elif lives==2:
-		print(2)
 		heart1.visible=true
 		heart2.visible=true
 		heart3.visible=false

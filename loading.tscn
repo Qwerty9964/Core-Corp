@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bw16i2l2l4wuk"]
+
+[ext_resource type="Script" uid="uid://dop0cx63v2ldx" path="res://loading.gd" id="1_gov4d"]
+
+[node name="loading" type="Node2D" unique_id=1281582320]
+script = ExtResource("1_gov4d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1032967338]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=22136093]
+offset_right = 652.0
+offset_bottom = 379.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1353441802]
+offset_left = 245.0
+offset_top = 137.0
+offset_right = 407.0
+offset_bottom = 238.0
+text = "LOADING.....
+
+your computer is a potato (like mine)"

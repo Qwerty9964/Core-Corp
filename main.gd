@@ -114,7 +114,6 @@ func activate_particles(cords) -> void:
 	particle_instance.restart()
 	
 func camera_shake() -> void:
-	print("shook")
 	for i in range(5):
 		var shake_vector=Vector2(randf_range(-0.55,0.55),randf_range(-0.55,0.55))
 		$character/Camera2D.position+=shake_vector
@@ -186,7 +185,6 @@ func generate_world() -> void:
 func spawn_enemy(tile_cords) -> void:
 	var local_cords = terrain.map_to_local(tile_cords)
 	var global_cords = terrain.to_global(local_cords)
-	print(global_cords)
 	
 	var enemy = ENEMY_SCENE.instantiate()
 	enemy.global_position = global_cords

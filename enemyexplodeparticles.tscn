@@ -13,6 +13,6 @@ color = Color(0.21960784, 1, 1, 1)
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1221478999]
 emitting = false
 amount = 70
-lifetime = 0.24000000000000002
+lifetime = 0.24
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_bdbf6")
