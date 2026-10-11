@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnu85y1xoxbp5"]
 
-[ext_resource type="Script" uid="uid://dyjq5545mn46v" path="res://camera_2d.gd" id="2_pjt0s"]
+[ext_resource type="Script" uid="uid://dyjq5545mn46v" path="res://main/camera_2d.gd" id="2_pjt0s"]
 [ext_resource type="Texture2D" uid="uid://br1u466nh5kwn" path="res://assets/icon.svg" id="3_wa5vi"]
 [ext_resource type="Texture2D" uid="uid://d1k16nd1g6nte" path="res://assets/futuristicchracter.png" id="3_wfnr8"]
 

@@ -3,8 +3,8 @@ extends Node2D
 @onready var terrain: TileMapLayer = $terrain
 var mode: String = "negative"
 @onready var pickaxe: Node2D = $character/miningpivot/pickaxe
-const MINING_PARTICLES = preload("res://mineparticle.tscn")
-const ENEMY_SCENE = preload("res://enemy.tscn")
+const MINING_PARTICLES = preload("res://main/mineparticle.tscn")
+const ENEMY_SCENE = preload("res://main/enemy.tscn")
 
 const SOURCE_ID = 0
 const ALT_SOURCE_ID = 2
@@ -13,7 +13,7 @@ const DIRT = Vector2i(1,0)
 const STONE = Vector2i(0,1)
 const CRYSTAL = Vector2i(1,1)
 
-const GAMEOVER_SCREEN = preload("res://gameover.tscn")
+const GAMEOVER_SCREEN = preload("res://main/gameover.tscn")
 
 var cave_noise := FastNoiseLite.new()
 var crystal_noise := FastNoiseLite.new()

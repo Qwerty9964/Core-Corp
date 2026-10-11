@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gi0nkq0yklp7"
-path="res://.godot/imported/spikeball1.png-971837175658f64cf1dd98ffcf469a26.ctex"
+path="res://.godot/imported/spikeball1.png-0e6a75c1b213e9aa4eb93720a344651d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spikeball1.png"
-dest_files=["res://.godot/imported/spikeball1.png-971837175658f64cf1dd98ffcf469a26.ctex"]
+source_file="res://assets/spikeball1.png"
+dest_files=["res://.godot/imported/spikeball1.png-0e6a75c1b213e9aa4eb93720a344651d.ctex"]
 
 [params]
 

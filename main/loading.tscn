@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bw16i2l2l4wuk"]
 
-[ext_resource type="Script" uid="uid://dop0cx63v2ldx" path="res://loading.gd" id="1_gov4d"]
+[ext_resource type="Script" uid="uid://dop0cx63v2ldx" path="res://main/loading.gd" id="1_8umtg"]
 
 [node name="loading" type="Node2D" unique_id=1281582320]
-script = ExtResource("1_gov4d")
+script = ExtResource("1_8umtg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1032967338]
 

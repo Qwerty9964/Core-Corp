@@ -1,17 +1,15 @@
 extends Node2D
 
-const LOADING = preload("res://loading.tscn")
+const MAIN = preload("res://main/main.tscn")
+var type = "null"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	print(globals)
+	if globals.loading_type == "main":
+		print("ran")
+		get_tree().change_scene_to_packed(MAIN)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_button_button_down() -> void:
-	globals.loading_type="main"
-	get_tree().change_scene_to_file("res://main.tscn")

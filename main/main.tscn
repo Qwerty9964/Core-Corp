@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://dcrtr027740m7"]
 
-[ext_resource type="Script" uid="uid://dsdxqa0igaqd0" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cnu85y1xoxbp5" path="res://character.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://bnjykmm2sr25m" path="res://mytile1.png" id="2_5vw27"]
-[ext_resource type="Script" uid="uid://lit5oxc31vmg" path="res://character.gd" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://0ypk7udsrux8" path="res://mytile2.png" id="3_5vw27"]
-[ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://pickaxe.tscn" id="4_lquwl"]
-[ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://assets/simpledigsound.wav" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://j88xef6qjp6l" path="res://ui.tscn" id="7_272bh"]
+[ext_resource type="Script" uid="uid://dsdxqa0igaqd0" path="res://main/main.gd" id="1_67ri8"]
+[ext_resource type="Texture2D" uid="uid://do0wv7hhhnqhl" path="res://assets/mytile1.png" id="2_grrlh"]
+[ext_resource type="Texture2D" uid="uid://dy8tc6b7d7ary" path="res://assets/mytile2.png" id="3_0i4oc"]
+[ext_resource type="PackedScene" uid="uid://cnu85y1xoxbp5" path="res://main/character.tscn" id="4_bsumw"]
+[ext_resource type="Script" uid="uid://lit5oxc31vmg" path="res://main/character.gd" id="5_fwcvl"]
+[ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://main/pickaxe.tscn" id="6_na0o7"]
+[ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://assets/simpledigsound.wav" id="7_73k8k"]
+[ext_resource type="PackedScene" uid="uid://j88xef6qjp6l" path="res://main/ui.tscn" id="8_5xyti"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 resource_name = "stonebasic"
-texture = ExtResource("2_5vw27")
+texture = ExtResource("2_grrlh")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -22,7 +22,7 @@ texture = ExtResource("2_5vw27")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
-texture = ExtResource("3_5vw27")
+texture = ExtResource("3_0i4oc")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -41,7 +41,7 @@ sources/0 = SubResource("TileSetAtlasSource_lquwl")
 sources/2 = SubResource("TileSetAtlasSource_kek77")
 
 [node name="main" type="Node2D" unique_id=2037377725]
-script = ExtResource("1_1bvp3")
+script = ExtResource("1_67ri8")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1616620848]
 offset_left = -3211.0
@@ -53,22 +53,22 @@ color = Color(0.023784133, 0.0077189947, 0.056040138, 1)
 [node name="terrain" type="TileMapLayer" parent="." unique_id=840139142]
 tile_set = SubResource("TileSet_3442d")
 
-[node name="character" parent="." unique_id=951427430 instance=ExtResource("1_ig7tw")]
+[node name="character" parent="." unique_id=951427430 instance=ExtResource("4_bsumw")]
 position = Vector2(1335, -42)
-script = ExtResource("2_h2yge")
+script = ExtResource("5_fwcvl")
 
 [node name="miningpivot" type="Node2D" parent="character" unique_id=1736636872]
 position = Vector2(4.7683716e-07, 3.5714285)
 
-[node name="pickaxe" parent="character/miningpivot" unique_id=691665657 instance=ExtResource("4_lquwl")]
+[node name="pickaxe" parent="character/miningpivot" unique_id=691665657 instance=ExtResource("6_na0o7")]
 visible = false
 rotation = -0.6981317
 
 [node name="sound" type="AudioStreamPlayer2D" parent="character/miningpivot/pickaxe" unique_id=1685996764]
-stream = ExtResource("5_7mycd")
+stream = ExtResource("7_73k8k")
 pitch_scale = 0.8
 
-[node name="ui" parent="." unique_id=181108479 instance=ExtResource("7_272bh")]
+[node name="ui" parent="." unique_id=181108479 instance=ExtResource("8_5xyti")]
 
 [connection signal="lives_signal" from="character" to="." method="_on_character_lives_signal"]
 [connection signal="lives_signal" from="character" to="ui" method="_on_character_lives_signal"]
