@@ -1,13 +1,22 @@
 [gd_scene format=3 uid="uid://dcrtr027740m7"]
 
 [ext_resource type="Script" uid="uid://dsdxqa0igaqd0" path="res://main/main.gd" id="1_67ri8"]
-[ext_resource type="Texture2D" uid="uid://do0wv7hhhnqhl" path="res://assets/mytile1.png" id="2_grrlh"]
-[ext_resource type="Texture2D" uid="uid://dy8tc6b7d7ary" path="res://assets/mytile2.png" id="3_0i4oc"]
+[ext_resource type="Texture2D" uid="uid://cvhhs4rbl5rp5" path="res://assets/backgroudtile.png" id="2_0i4oc"]
+[ext_resource type="Texture2D" uid="uid://co071upxdhk1f" path="res://assets/mytile1.png" id="2_grrlh"]
+[ext_resource type="Texture2D" uid="uid://crd2afti38opn" path="res://assets/mytile2.png" id="3_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://cnu85y1xoxbp5" path="res://main/character.tscn" id="4_bsumw"]
 [ext_resource type="Script" uid="uid://lit5oxc31vmg" path="res://main/character.gd" id="5_fwcvl"]
-[ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://main/pickaxe.tscn" id="6_na0o7"]
+[ext_resource type="PackedScene" uid="uid://db278lauiqkf4" path="res://main/pickaxe.tscn" id="6_67ri8"]
 [ext_resource type="AudioStream" uid="uid://clyw2pbg7unor" path="res://assets/simpledigsound.wav" id="7_73k8k"]
 [ext_resource type="PackedScene" uid="uid://j88xef6qjp6l" path="res://main/ui.tscn" id="8_5xyti"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bsumw"]
+texture = ExtResource("2_0i4oc")
+0:1/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4mf0t"]
+sources/0 = SubResource("TileSetAtlasSource_bsumw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 resource_name = "stonebasic"
@@ -48,7 +57,10 @@ offset_left = -3211.0
 offset_top = -1177.0
 offset_right = 10646.0
 offset_bottom = 13414.0
-color = Color(0.023784133, 0.0077189947, 0.056040138, 1)
+color = Color(0.4321915, 0.43079334, 0.76936895, 1)
+
+[node name="background" type="TileMapLayer" parent="." unique_id=1888452860]
+tile_set = SubResource("TileSet_4mf0t")
 
 [node name="terrain" type="TileMapLayer" parent="." unique_id=840139142]
 tile_set = SubResource("TileSet_3442d")
@@ -60,11 +72,13 @@ script = ExtResource("5_fwcvl")
 [node name="miningpivot" type="Node2D" parent="character" unique_id=1736636872]
 position = Vector2(4.7683716e-07, 3.5714285)
 
-[node name="pickaxe" parent="character/miningpivot" unique_id=691665657 instance=ExtResource("6_na0o7")]
-visible = false
-rotation = -0.6981317
+[node name="pickaxe" parent="character/miningpivot" unique_id=691665657 instance=ExtResource("6_67ri8")]
+position = Vector2(1.9073486e-06, -0.7142849)
 
 [node name="sound" type="AudioStreamPlayer2D" parent="character/miningpivot/pickaxe" unique_id=1685996764]
+position = Vector2(-25, -16.42857)
+rotation = -0.6981317
+scale = Vector2(0.9999999, 0.9999999)
 stream = ExtResource("7_73k8k")
 pitch_scale = 0.8
 

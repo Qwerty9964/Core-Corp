@@ -1,10 +1,14 @@
 extends Node2D
 
-@onready var terrain: TileMapLayer = $terrain
-var mode: String = "negative"
 @onready var pickaxe: Node2D = $character/miningpivot/pickaxe
+@onready var terrain: TileMapLayer = $terrain
+@onready var background: TileMapLayer = $background
+
+var mode: String = "negative"
+
 const MINING_PARTICLES = preload("res://main/mineparticle.tscn")
 const ENEMY_SCENE = preload("res://main/enemy.tscn")
+const GAMEOVER_SCREEN = preload("res://main/gameover.tscn")
 
 const SOURCE_ID = 0
 const ALT_SOURCE_ID = 2
@@ -13,13 +17,15 @@ const DIRT = Vector2i(1,0)
 const STONE = Vector2i(0,1)
 const CRYSTAL = Vector2i(1,1)
 
-const GAMEOVER_SCREEN = preload("res://main/gameover.tscn")
+const STONEBACK = Vector2i(0,1)
+const DIRTBACK = Vector2i(0,0)
 
 var cave_noise := FastNoiseLite.new()
 var crystal_noise := FastNoiseLite.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#caves-----------------------------------------------------------
 	cave_noise.noise_type=FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	cave_noise.seed=randi()
 	cave_noise.frequency=0.043
@@ -29,6 +35,7 @@ func _ready() -> void:
 	cave_noise.fractal_lacunarity = 2.0
 	cave_noise.fractal_gain = 0.5
 	
+	#crystal---------------------------------------------------------
 	crystal_noise.noise_type=FastNoiseLite.TYPE_PERLIN
 	crystal_noise.seed=randi()
 	crystal_noise.frequency=0.15
@@ -123,25 +130,33 @@ func _on_ui_surface() -> void:
 	$character.global_position.y=-20
 	
 func generate_world() -> void:
-	for x in range(600):
-		for y in range(400):
+	for x in range(800):
+		for y in range(500):
 			var id
 			var cell
+			var back_cell
 			var randomn := randf()
 			var randomm := randf()
 			var randome := randf()
 			var cave_noise_value := cave_noise.get_noise_2d(x,y)
 			var crystal_noise_value := crystal_noise.get_noise_2d(x,y)
+			
+			#so this code is very sketchy but it works. basically just changes odds of the tile based off y value.
 			var stone_chance = clamp(1 - remap(y*2.5,0,150,0,1.5),0,1)
-			var grass_chance = clamp(remap(y*5,0,150,0,4), 0 ,1)
+			var grass_chance = clamp(remap(y*100,0,150,0,4), 0 ,1)
 			var enemy_chance := 0.001
 			
 			
+			if y<25: back_cell=DIRTBACK
+			else: back_cell=STONEBACK
+			
+			
+			#terrain
 			if randome <enemy_chance:
 				spawn_enemy(Vector2(x,y))
 			else:
-				if cave_noise_value < -0.287 and y >20:
-					continue
+				if cave_noise_value < -0.287 and y >25:
+					back_cell=STONEBACK
 					
 				else:
 					if crystal_noise_value>0.48 and y >30:
@@ -151,6 +166,7 @@ func generate_world() -> void:
 							id=ALT_SOURCE_ID
 							
 						cell=CRYSTAL
+						
 					
 					elif randomn > stone_chance:
 						if randf_range(0,1) > 0.3:
@@ -159,6 +175,7 @@ func generate_world() -> void:
 							id=ALT_SOURCE_ID
 							
 						cell=STONE
+						
 						
 					else:
 						if randomm > grass_chance:
@@ -169,18 +186,28 @@ func generate_world() -> void:
 							
 							cell = GRASS
 							
+							
 						else:
 							if randf_range(0,1) > 0.4:
 								id=SOURCE_ID
 							else:
 								id=ALT_SOURCE_ID
 							cell = DIRT
+							
 						
-				terrain.set_cell(
-					Vector2i(x,y),
-					id,
-					cell
-				)
+					terrain.set_cell(
+						Vector2i(x,y),
+						id,
+						cell
+					)
+					
+			
+			
+			background.set_cell(
+				Vector2i(x,y),
+				SOURCE_ID,
+				back_cell
+			)
 				
 func spawn_enemy(tile_cords) -> void:
 	var local_cords = terrain.map_to_local(tile_cords)
