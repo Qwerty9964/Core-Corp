@@ -55,7 +55,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
-	pickaxe.visible = false
 	$ui/Panel.lives = $character.lives
 	
 	if Input.is_action_just_pressed("surface"):
@@ -98,10 +97,12 @@ func _process(delta: float) -> void:
 		gun.visible=true
 		pickaxe.visible=false
 		
-		draw_line($character/miningpivot/gun/laserpoint.global_position,mouse_pos,"red",1)
+		$character/miningpivot/gun/laserpoint/laser.set_point_position(1,Vector2(30*gun.position.x,30*gun.position.y))
+		
+	else:
+		gun.visible=false
+		pickaxe.visible=false
 	
-	
-
 
 func break_tile() -> void:
 	var mouse_pos = get_global_mouse_position()
@@ -251,3 +252,4 @@ func spawn_enemy(tile_cords) -> void:
 func _on_character_lives_signal(char_lives) -> void:
 	if char_lives==0:
 		get_tree().change_scene_to_packed(GAMEOVER_SCREEN)
+		

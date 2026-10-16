@@ -84,12 +84,17 @@ stream = ExtResource("7_73k8k")
 pitch_scale = 0.8
 
 [node name="gun" parent="character/miningpivot" unique_id=1333102447 instance=ExtResource("9_0i4oc")]
-visible = false
 position = Vector2(9.2857065, -2.857142)
 scale = Vector2(0.7142857, 0.7142857)
 
 [node name="laserpoint" type="Node2D" parent="character/miningpivot/gun" unique_id=1345691413]
-position = Vector2(4, -4)
+position = Vector2(9, 0)
+
+[node name="laser" type="Line2D" parent="character/miningpivot/gun/laserpoint" unique_id=640805036]
+rotation = 0.28116977
+points = PackedVector2Array(0, 0, 10, 10)
+width = 0.6
+default_color = Color(1, 0, 0, 1)
 
 [node name="ui" parent="." unique_id=181108479 instance=ExtResource("8_5xyti")]
 
