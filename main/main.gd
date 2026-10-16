@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var pickaxe: Node2D = $character/miningpivot/pickaxe
+@onready var gun: Node2D = $character/miningpivot/gun
 @onready var terrain: TileMapLayer = $terrain
 @onready var background: TileMapLayer = $background
 
@@ -22,6 +23,9 @@ const DIRTBACK = Vector2i(0,0)
 
 var cave_noise := FastNoiseLite.new()
 var crystal_noise := FastNoiseLite.new()
+
+var mining := false
+var weaponing := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,15 +54,33 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var mouse_pos = get_global_mouse_position()
 	pickaxe.visible = false
 	$ui/Panel.lives = $character.lives
 	
 	if Input.is_action_just_pressed("surface"):
 		_on_ui_surface()
 	
+	#mine logic
 	if Input.is_action_pressed("mine_toggle"):
+		mining=true
+		weaponing=false
+	else:
+		mining=false
+	
+	#weapon logic
+	if Input.is_action_pressed("weapon_toggle"):
+		mining=false
+		weaponing=true	
+	else:
+		weaponing=false
+	
+	if mining:
+		$character/miningpivot.look_at(mouse_pos)
 		pickaxe.visible = true
+		gun.visible=false
 		if Input.is_action_pressed('mine'):
+			
 			if mode == "negative":
 				pickaxe.rotation-=18*delta
 				if pickaxe.rotation<-1.03:
@@ -70,14 +92,19 @@ func _process(delta: float) -> void:
 					mode = "negative"
 					
 			break_tile()
+			
+	elif weaponing:
+		$character/miningpivot.look_at(mouse_pos)
+		gun.visible=true
+		pickaxe.visible=false
+		
+		draw_line($character/miningpivot/gun/laserpoint.global_position,mouse_pos,"red",1)
 	
 	
 
 
 func break_tile() -> void:
 	var mouse_pos = get_global_mouse_position()
-	
-	$character/miningpivot.look_at(mouse_pos)
 	
 	var left_pickaxe_pos = $character/miningpivot/pickaxe/sprite/trackingpoint.global_position
 	var left_terrain_pos = terrain.to_local(left_pickaxe_pos)
