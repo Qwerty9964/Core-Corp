@@ -3,21 +3,33 @@ extends CharacterBody2D
 var player: Node2D
 var terrain
 var active = false
-const SPEED := 100
+const SPEED := 90
 var abouttoexplode=false
+var health=10
+var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("enemies")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if health<=0 and dead==false:
+		explode_start()
+		dead = true
+		
+		
 	if abouttoexplode==true and $enemyexplodeparticles/GPUParticles2D.emitting == false:
 		explode_end()
+		
+		
 	var distance = global_position.distance_to(player.global_position)
+	
 	if distance<100:
 		active=true
+		
 	if active:
 		rotation+=1
 		destroy_tiles()
@@ -44,7 +56,6 @@ func destroy_tiles() -> void:
 	terrain.erase_cell(Vector2i(x,y-1))
 	
 func explode_start() -> void:
-	player.lives-=1
 	$enemyexplodeparticles/GPUParticles2D.emitting = true
 	
 	abouttoexplode=true
@@ -62,7 +73,11 @@ func explode_end() -> void:
 			terrain.erase_cell(Vector2i(i,j))
 			
 	queue_free()
+	
+func take_damage() -> void:
+	health-=5
 
 func _on_detectionarea_body_entered(body: Node2D) -> void:
-	if body==player:
+	if body==player and abouttoexplode==false:
+		player.lives-=1
 		explode_start()

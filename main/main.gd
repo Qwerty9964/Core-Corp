@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var pickaxe: Node2D = $character/miningpivot/pickaxe
 @onready var gun: Node2D = $character/miningpivot/gun
+@onready var ray: RayCast2D = $character/miningpivot/gun/laserpoint/ray
 @onready var terrain: TileMapLayer = $terrain
 @onready var background: TileMapLayer = $background
 
@@ -27,7 +28,7 @@ var crystal_noise := FastNoiseLite.new()
 var mining := false
 var weaponing := false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	#caves-----------------------------------------------------------
 	cave_noise.noise_type=FastNoiseLite.TYPE_SIMPLEX_SMOOTH
@@ -52,7 +53,6 @@ func _ready() -> void:
 	generate_world()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 	$ui/Panel.lives = $character.lives
@@ -97,7 +97,15 @@ func _process(delta: float) -> void:
 		gun.visible=true
 		pickaxe.visible=false
 		
-		$character/miningpivot/gun/laserpoint/laser.set_point_position(1,Vector2(30*gun.position.x,30*gun.position.y))
+		$character/miningpivot/gun/laserpoint/laser.set_point_position(1,Vector2(200,0))
+		
+		if Input.is_action_just_pressed("shoot"):
+			
+			if ray.is_colliding():
+				var object = ray.get_collider()
+				if object.is_in_group("enemies"):
+					object.take_damage()
+			
 		
 	else:
 		gun.visible=false
@@ -138,9 +146,7 @@ func break_tile() -> void:
 	terrain.erase_cell(handle_tile_cords)
 	terrain.erase_cell(right_tile_cords)
 	terrain.erase_cell(top_tile_cords)
-	#terrain.erase_cell(Vector2i(tile_cords.x+1,tile_cords.y+1))
-	#terrain.erase_cell(Vector2i(tile_cords.x,tile_cords.y+1))
-	#terrain.erase_cell(Vector2i(tile_cords.x+1,tile_cords.y))
+	
 	
 func activate_particles(cords) -> void:
 	var particle_instance = MINING_PARTICLES.instantiate()
@@ -180,7 +186,7 @@ func generate_world() -> void:
 			
 			
 			#terrain
-			if randome <enemy_chance:
+			if randome <enemy_chance and y>20:
 				spawn_enemy(Vector2(x,y))
 			else:
 				if cave_noise_value < -0.287 and y >25:

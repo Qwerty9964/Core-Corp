@@ -67,7 +67,7 @@ tile_set = SubResource("TileSet_4mf0t")
 tile_set = SubResource("TileSet_3442d")
 
 [node name="character" parent="." unique_id=951427430 instance=ExtResource("4_bsumw")]
-position = Vector2(1335, -42)
+position = Vector2(1965, -57)
 script = ExtResource("5_fwcvl")
 
 [node name="miningpivot" type="Node2D" parent="character" unique_id=1736636872]
@@ -91,10 +91,12 @@ scale = Vector2(0.7142857, 0.7142857)
 position = Vector2(9, 0)
 
 [node name="laser" type="Line2D" parent="character/miningpivot/gun/laserpoint" unique_id=640805036]
-rotation = 0.28116977
 points = PackedVector2Array(0, 0, 10, 10)
 width = 0.6
 default_color = Color(1, 0, 0, 1)
+
+[node name="ray" type="RayCast2D" parent="character/miningpivot/gun/laserpoint" unique_id=1625917906]
+target_position = Vector2(200, 0)
 
 [node name="ui" parent="." unique_id=181108479 instance=ExtResource("8_5xyti")]
 
