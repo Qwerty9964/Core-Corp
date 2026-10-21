@@ -5,12 +5,14 @@ extends Node2D
 @onready var ray: RayCast2D = $character/miningpivot/gun/laserpoint/ray
 @onready var terrain: TileMapLayer = $terrain
 @onready var background: TileMapLayer = $background
+@onready var muzzle: GPUParticles2D = $character/miningpivot/gun/muzzleflash
 
 var mode: String = "negative"
 
 const MINING_PARTICLES = preload("res://main/mineparticle.tscn")
 const ENEMY_SCENE = preload("res://main/enemy.tscn")
 const GAMEOVER_SCREEN = preload("res://main/gameover.tscn")
+
 
 const SOURCE_ID = 0
 const ALT_SOURCE_ID = 2
@@ -100,7 +102,8 @@ func _process(delta: float) -> void:
 		$character/miningpivot/gun/laserpoint/laser.set_point_position(1,Vector2(200,0))
 		
 		if Input.is_action_just_pressed("shoot"):
-			
+			muzzle.emitting=true
+			camera_shake()
 			if ray.is_colliding():
 				var object = ray.get_collider()
 				if object.is_in_group("enemies"):

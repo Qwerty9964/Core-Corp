@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dw244ey50vc7p"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bdbf6"]
+particle_flag_disable_z = true
+spread = 12.47
+initial_velocity_min = 542.11
+initial_velocity_max = 652.63
+gravity = Vector3(0, 15, 0)
+color = Color(1, 1, 0.32941177, 1)
+
+[node name="muzzleflash" type="GPUParticles2D" unique_id=1964873938]
+emitting = false
+amount = 80
+lifetime = 0.02
+one_shot = true
+trail_sections = 2
+process_material = SubResource("ParticleProcessMaterial_bdbf6")
